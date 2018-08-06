@@ -1,0 +1,17 @@
+{
+  "name": "hd-wallet",
+  "version": "1.0.0",
+  "description": "my hd wallet",
+  "main": "mywallet.js",
+  "dependencies": {
+    "bip39": "^2.5.0",
+    "ethereumjs-util": "^5.2.0",
+    "ethereumjs-wallet": "^0.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "make test"
+  },
+  "author": "bluesky",
+  "license": "ISC"
+}
