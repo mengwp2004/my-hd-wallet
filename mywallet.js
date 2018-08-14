@@ -4,6 +4,7 @@ var util = require('ethereumjs-util')
 var fs = require("fs")
 
 var mnemonic = bip39.generateMnemonic()
+mnemonic = "enjoy legal modify purchase arrest place fold funny ripple unaware flock volume"
 console.log("mnemonic code:")
 console.log(mnemonic)
 
@@ -35,8 +36,9 @@ publicExtend = key1.publicExtendedKey()
 console.log("publicExtend:")
 console.log(publicExtend)
 
+index = 2
 
-var key2 = key1.derivePath("0")
+var key2 = key1.deriveChild(index)
 console.log("key2:")
 console.log(key2)
 
@@ -64,11 +66,14 @@ fs.writeFile(hdWallet1Name,v3,{flag:'a',encoding:'utf-8',mode:'0666'},function(e
 
 
 console.log("---------------------------")
+console.log("public key:")
+console.log(key2._hdkey._publicKey)
 
-var address1 = util.pubToAddress(key1._hdkey._publicKey, true)
+var address1 = util.pubToAddress(key2._hdkey._publicKey, true)
+console.log("address byte:")
 console.log(address1)
 
-address1 = util.toChecksumAddress(address1.toString('hex'))
+address1 = util.toChecksumAddress(address1.toString('hex')).toLowerCase()
 console.log("address:")
 console.log(address1)
 
@@ -82,7 +87,7 @@ console.log("hd wallet1:")
 console.log(hdWallet1)
 
 
-var key2 = hdWallet1.derivePath("0")
+var key2 = hdWallet1.deriveChild(index)
 //var key2 = hdWallet1.deriveChild(0)
 console.log("public key2:")
 console.log(key2)
@@ -90,7 +95,7 @@ console.log(key2)
 address1 = util.pubToAddress(key2._hdkey._publicKey, true)
 console.log(address1)
 
-address1 = util.toChecksumAddress(address1.toString('hex'))
+address1 = util.toChecksumAddress(address1.toString('hex')).toLowerCase()
 console.log("address:")
 console.log(address1)
 
